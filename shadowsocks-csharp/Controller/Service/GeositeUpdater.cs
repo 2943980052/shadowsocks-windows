@@ -260,7 +260,26 @@ var __RULES__ = {JsonConvert.SerializeObject(ruleLines, Formatting.Indented)};
             {
                 ruleLines = new List<string>()
                 {
-                    "/.*/" // block/proxy all unmatched domains
+                    "/.*/", // block/proxy all unmatched domains
+                    "@@||127.*.*.*", // nasty workaround to exempt private IP ranges
+                    "@@||192.168.*.*",
+                    "@@||10.*.*.*",
+                    "@@||172.16.*.*",
+                    "@@||172.17.*.*",
+                    "@@||172.18.*.*",
+                    "@@||172.19.*.*",
+                    "@@||172.20.*.*",
+                    "@@||172.21.*.*",
+                    "@@||172.22.*.*",
+                    "@@||172.23.*.*",
+                    "@@||172.24.*.*",
+                    "@@||172.25.*.*",
+                    "@@||172.26.*.*",
+                    "@@||172.27.*.*",
+                    "@@||172.28.*.*",
+                    "@@||172.29.*.*",
+                    "@@||172.30.*.*",
+                    "@@||172.31.*.*", // TODO: IPv6 CIDR fc00::/7 fe80::/10 ::1/128
                 };
                 ruleLines.AddRange(GenerateExceptionRules(directGroups));
             }
